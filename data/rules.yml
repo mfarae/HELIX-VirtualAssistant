@@ -1,0 +1,32 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: User decreases the thermostat temperature 
+  steps:
+  - intent: dec_thermostat
+  - action: action_decrease_thermostat
+
+- rule: User increases the thermostat temperature
+  steps:
+  - intent: inc_thermostat
+  - action: action_increase_thermostat
+
+#- rule: opening entertainment short
+#  steps:
+#  - intent: open_entertainment_short
+#  - action: utter_ask_for_source
+#  - intent: give_source
+#  - action: utter_ask_for_entertainment
+#  - intent: give_entertainment
+#  - action: action_open_entertainment

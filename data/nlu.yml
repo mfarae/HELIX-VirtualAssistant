@@ -1,0 +1,238 @@
+version: "3.1"
+nlu:
+
+- regex: start_time
+  examples: |
+    - ^(1[012]|[1-9]):([0-5][0-9])\s?(am|pm)$
+
+- regex: end_time
+  examples: |
+    - ^(1[012]|[1-9]):([0-5][0-9])\s?(am|pm)$
+
+- regex: time
+  examples: |
+    - ^(1[012]|[1-9]):([0-5][0-9])\s?(am|pm)$
+
+- regex:  increment
+  examples: |
+    - \d{1,2}
+- regex:  decrement
+  examples: |
+    - \d{1,2}
+
+- lookup: source
+  examples: |
+    - Hulu
+    - YouTube
+    - Spotify
+    - Disneyplus
+    - Netflix
+
+- intent: greet
+  examples: |
+    - Hey HELIX
+    - HELIX
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - Hey
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: supply_name
+  examples: |
+    - My name is [Hamza](name)
+    - name: [Hamza](name)
+    - Yeah sure. I'm [Farae](name)
+    - [Hamza](name)
+    - Sure. It's [Umair](name)
+    - [Anything](name)
+    - [Alex](name)
+    - [Bob](name)
+    - [Ali](name)
+    - [Ahmed](name)
+    - [Daniel](name)
+    - [Jack](name)
+    - [John](name)
+    - [Farae](name)
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: turn_off_lights
+  examples: |
+    - turn off the lights
+    - the lights need to be switched off
+    - switch off the lights
+    - close the lights
+- intent: turn_on_lights
+  examples: |
+    - turn on the lights
+    - the lights need to be switched on
+    - switch on the lights
+    - open the lights
+- intent: lock_door
+  examples: |
+    - lock the door
+    - close the door
+    - door needs to be closed
+- intent: unlock_door
+  examples: |
+    - unlock the door
+    - open the door
+    - door needs to be opened
+- intent: search_for
+  examples: |
+    - what is [the time](search)
+    - give me the [weather forecast](search)
+    - search for [nearby restaurants](search)
+    - search for [google](search)
+    - search for [weather](search)
+    - search for [news](search)
+    - search for [anything](search)
+- intent: open_entertainment_long
+  examples: |
+    - Play [Breaking Bad](entertainment) on [Netflix](source)
+    - Watch [The Crown](entertainment) on [Amazon Prime](source)
+    - Start [Game of Thrones](entertainment) on [HBO](source)
+    - Open [Hulu](source) and play [The Handmaid's Tale](entertainment)
+    - Turn on [Disneyplus](source) and watch [The Lion King](entertainment)
+    - Play the movie [Interstellar](entertainment) on [Netflix](source)
+    - Put on [The Beatles](entertainment) on [Spotify](source).
+    - Play [friends](entertainment) on [HBO Max](source) please
+    - Watch the show [Stranger Things](entertainment) on [Netflix](source)
+    - I want to watch [Sky News](entertainment) on [YouTube](source)
+- intent: open_entertainment_short
+  examples: |
+    - I want to watch a movie
+    - Play music
+    - Start the TV Show
+    - Turn on the Television
+- intent: give_source
+  examples: |
+    - [Netflix](source)
+    - [Hulu](source)
+    - [YouTube](source)
+    - [Spotify](source)
+    - [Disneyplus](source)
+- intent: give_entertainment
+  examples: |
+    - [Breaking Bad](entertainment)
+    - [The Crown](entertainment)
+    - [Game of Thrones](entertainment)
+    - [Interstellar](entertainment)
+    - [The Handmaid's Tale](entertainment)
+    - [The Lion King](entertainment)
+    - [The Beatles](entertainment)
+    - [friends](entertainment)
+    - [Stranger Things](entertainment)
+    - [Sky News](entertainment)
+- intent: close_entertainment
+  examples: |
+    - Close the television
+    - Stop the music
+    - Pause the TV
+    - Turn off the Television
+- intent: register_new_user
+  examples: |
+    - register a new user
+    - register me as a new user
+    - open an account for me
+    - authorize me for the future
+    - I want to sign up for the app
+    - I need to register for the platform
+    - Can you help me create a new account?
+    - I'm a new user and need to register
+    - What information do you need to register me?
+    - How can I start the registration process?
+- intent: set_alarm
+  examples: |
+    - Set an alarm for [06:00 AM](time).
+    - Can you set my alarm for [07:30 AM](time)
+    - I need to wake up at [08:00 PM](time)
+    - Please set an alarm for [09:15 AM](time).
+    - I want to wake up at [05:45 AM](time), can you set the alarm for me?
+    - Set an alarm for [07:00 PM](time)
+    - Can you schedule an alarm for [10:30 AM](time)
+    - Please set the alarm for [06:45 AM](time).
+    - I want to set an alarm for [05:15 PM](time), can you help me with that?
+    - Set an alarm for [11:15 PM](time) tonight.
+- intent: set_thermostat
+  examples: |
+    - Set the temperature to [72](temperature) degrees.
+    - Set the thermostat to [68](temperature) degrees
+    - Change the temperature to [70](temperature) degrees.
+    - Adjust the temperature to [65](temperature) degrees.
+    - Set the heat to [75](temperature) degrees.
+    - Make the temperature [73](temperature) degrees.
+    - Set the AC to [60](temperature) degrees.
+    - Increase the temperature to [80](temperature) degrees.
+    - Reduce the temperature to [60](temperature) degrees.
+    - Set the thermostat to [72](temperature) degrees.
+- intent: dec_thermostat
+  examples: |
+    - decrease the thermostat by [2](decrement) degrees
+    - Please lower the temperature by [3](decrement) degrees
+    - reduce the thermostat by [2](decrement) degrees
+    - can you decrement the thermostat by [1](decrement) degree
+    - Could you turn down the temperature by [5](decrement) degrees?
+    - Decrease the thermostat by [4](decrement) degrees.
+    - reduce the temperature by [2](decrement) degrees.
+    - Lower the temperature by [3](decrement) degrees.
+    - Can you decrement the thermostat by [1](decrement) degree?
+- intent: inc_thermostat
+  examples: |
+    - increase the thermostat by [2](increment) degrees
+    - raise the temperature by [3](increment) degrees
+    - increment the thermostat by [2](increment) degrees
+    - can you increase the thermostat by [1](increment) degree?
+    - Could you turn up the temperature by [5](increment) degrees?
+    - Increase the thermostat by [4](increment) degrees.
+    - raise the temperature by [2](increment) degrees.
+    - Increase the temperature by [3](increment) degrees.
+    - Can you increment the thermostat by [1](increment) degree?
+- intent: check_air_purification
+  examples: |
+    - I'm curious about the air quality, can you tell me the air purification level?
+    - How well is the air being filtered right now?
+    - Can you provide information on the air quality in the room?
+    - What is the level of air pollution in the room?
+    - Is the air purification system removing allergens effectively?
+    - How clean is the air in the room right now?
+    - Can you check the level of pollutants in the air?
+    - I'm concerned about the air quality, could you tell me the current air purification level?
+    - Can you give me an update on the air purification level?
+    - Is the air being purified to a healthy level?
+- intent: turning_on_boiler
+  examples: |
+    - Turn on the boiler from [07:00 PM](start_time) to [09:00 PM](end_time)?
+    - I want the boiler to be turned on from [06:00 AM](start_time) to [08:00 AM](end_time).
+    - Start the boiler at [04:00 PM](start_time) and turn it off at [06:00 PM](end_time).
+    - Turn on the boiler at [06:00 PM](start_time) and keep it running until [10:00 PM](end_time)?
+    - Start the boiler at [08:00 AM](start_time) and stop it at [10:00 AM](end_time), please.
+    - Schedule the boiler to turn on from [05:00 PM](start_time) to [07:00 PM](end_time).
+    - I want the boiler to run from [06:00 AM](start_time) to [08:00 AM](end_time).
+    - Turn on the boiler at [05:00 PM](start_time) and turn it off at [07:00 PM](end_time)?
+    - Schedule the boiler to start at [07:00 AM](start_time) and stop at [09:00 AM](end_time).
+    - Turn on the boiler from [09:00 PM](start_time) to [11:00 PM](end_time) every night

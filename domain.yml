@@ -1,0 +1,146 @@
+version: '3.1'
+intents:
+- bot_challenge
+- check_air_purification
+- close_entertainment
+- dec_thermostat
+- goodbye
+- greet
+- inc_thermostat
+- lock_door
+- open_entertainment_long
+- open_entertainment_short
+- register_new_user
+- search_for
+- set_alarm
+- set_thermostat
+- supply_name
+- turn_off_lights
+- turn_on_lights
+- turning_on_boiler
+- unlock_door
+- give_source
+- give_entertainment
+entities:
+- name
+- search
+- entertainment
+- source
+- time
+- temperature
+- decrement
+- increment
+- start_time
+- end_time
+- new_name
+slots:
+  name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: name
+      auto_fill: true
+  search:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: search
+      auto_fill: true
+  entertainment:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: entertainment
+      auto_fill: true
+  source:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: source
+      auto_fill: true
+  time:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: time
+      auto_fill: true
+  temperature:
+    type: float
+    mappings:
+    - type: from_entity
+      entity: temperature
+      auto_fill: true
+  decrement:
+    type: float
+    mappings:
+    - type: from_entity
+      entity: decrement
+      auto_fill: true
+  increment:
+    type: float
+    mappings:
+    - type: from_entity
+      entity: increment
+      auto_fill: true
+  start_time:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: start_time
+      auto_fill: true
+  end_time:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: end_time
+      auto_fill: true
+  new_name:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: new_name
+actions:
+- utter_greet
+- utter_ask_for_name
+- utter_acknowledge_provided_info
+- action_lock_door
+- action_unlock_door
+- action_light_off
+- action_light_on
+- action_open_entertainment
+- action_close_entertainment
+- action_set_thermostat
+- action_decrease_thermostat
+- action_increase_thermostat
+- action_set_alarm
+- action_check_air_purification
+- action_turn_on_boiler
+responses:
+  utter_greet:
+  - text: Hey! How are you? Could you tell me your name
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ask_for_name:
+  - text: Hello!
+  utter_acknowledge_provided_info:
+  - text: Thanks {name}!
+  utter_turning_lights_on:
+  - text: Lights turned on!
+  utter_turning_lights_off:
+  - text: Lights turned off!
+  utter_locking_door:
+  - text: Door Locked
+  utter_unlocking_door:
+  - text: Door unlocked
+  utter_search:
+  - text: 'Hope these results help: https://www.google.com/search?q={search}'
+  utter_ask_for_source:
+  - text: What platform should I open?
+  utter_ask_for_entertainment:
+  - text: What do you want to watch?
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

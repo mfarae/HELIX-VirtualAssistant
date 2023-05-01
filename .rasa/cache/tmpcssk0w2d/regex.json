@@ -1,0 +1,26 @@
+[
+  {
+    "name": "decrement",
+    "pattern": "\\d{1,2}"
+  },
+  {
+    "name": "end_time",
+    "pattern": "^(1[012]|[1-9]):([0-5][0-9])\\s?(am|pm)$"
+  },
+  {
+    "name": "increment",
+    "pattern": "\\d{1,2}"
+  },
+  {
+    "name": "start_time",
+    "pattern": "^(1[012]|[1-9]):([0-5][0-9])\\s?(am|pm)$"
+  },
+  {
+    "name": "time",
+    "pattern": "^(1[012]|[1-9]):([0-5][0-9])\\s?(am|pm)$"
+  },
+  {
+    "name": "source",
+    "pattern": "(\\bHulu\\b|\\bYouTube\\b|\\bSpotify\\b|\\bDisneyplus\\b|\\bNetflix\\b)"
+  }
+]

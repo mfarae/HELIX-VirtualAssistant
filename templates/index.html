@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="index.css" />
+    <title>H.E.L.I.X.</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(180deg, #57c601 0%, #320049 100%),
+          linear-gradient(121.28deg, #007762 0%, #5200ff 100%),
+          linear-gradient(341.1deg, #ff0000 7.52%, #1700a4 77.98%),
+          radial-gradient(49.82% 80.51% at 49.82% 50%, #820097 0%, #ff3d00 100%),
+          radial-gradient(50% 72.12% at 50% 50%, #eb00ff 0%, #0b0037 100%);
+        background-blend-mode: color-dodge, overlay, difference, difference,
+          normal;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        text-align: center;
+        margin: 0;
+      }
+
+      .bot-container {
+        padding: 0;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        border-radius: 20px;
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      .form-title {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        font-size: larger;
+        color: white;
+      }
+
+      .form-input {
+        width: 800px;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0px;
+      }
+
+      input[type="text"] {
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 0;
+        border-radius: 10px;
+        resize: none;
+      }
+
+      input[type="submit"] {
+        background-color: white;
+        color: black;
+        padding: 12px 20px;
+        margin-left: 0.5rem;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        opacity: 0.8;
+      }
+
+      .response-container {
+        margin-bottom: 200px;
+      }
+
+      .response {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        font-size: 32px;
+        font-weight: 700;
+        text-align: center;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0);
+        border-radius: 4px;
+        width: 50%;
+        min-height: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: translateX(50%);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">H.E.L.I.X</h1>
+
+    <div class="bot-container">
+      <form onsubmit="sendRequest(event)">
+        <label class="form-title" for="message">Type to Chat</label>
+        <table>
+          <tr>
+            <td>
+              <input
+                class="form-input"
+                type="text"
+                id="message"
+                name="message"
+              />
+            </td>
+            <td>
+              <input class="form-button" type="submit" value=">" />
+            </td>
+            <td>
+              <button type="form-button" id="micButton">
+                <i class="fas fa-microphone"></i>
+              </button>
+            </td>
+          </tr>
+        </table>
+      </form>
+
+      <div class="response" id="response"></div>
+    </div>
+
+    <script>
+      function sendRequest(event) {
+        event.preventDefault();
+        const messageInput = document.getElementById("message");
+        const message = messageInput.value;
+
+        if (message.trim() === "") return;
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/chatbot");
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.onload = () => {
+          const response = JSON.parse(xhr.responseText);
+          const responseDiv = document.getElementById("response");
+          responseDiv.innerHTML = response[0]["text"];
+        };
+
+        const data = JSON.stringify({ message: message });
+        xhr.send(data);
+        messageInput.value = "";
+      }
+
+      const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+
+      if (SpeechRecognition) {
+        console.log("Your browser supports speech recognition!");
+
+        const recognition = new SpeechRecognition();
+        const micButton = document.getElementById("micButton");
+        const inputBox = document.getElementById("message");
+
+        recognition.lang = "en-US";
+        recognition.continuous = true;
+
+        let listening = false;
+
+        micButton.addEventListener("click", () => {
+          if (!listening) {
+            listening = true;
+            micButton.innerHTML = "<i class='fas fa-microphone-slash'></i>";
+            recognition.start();
+          } else {
+            listening = false;
+            micButton.innerHTML = "<i class='fas fa-microphone'></i>";
+            recognition.stop();
+          }
+        });
+
+        recognition.addEventListener("result", (e) => {
+          const transcript = Array.from(e.results)
+            .map((result) => result[0])
+            .map((result) => result.transcript)
+            .join("");
+
+          inputBox.value = transcript;
+        });
+      } else {
+        console.log("Your browser does not support speech recognition.");
+      }
+    </script>
+  </body>
+</html>

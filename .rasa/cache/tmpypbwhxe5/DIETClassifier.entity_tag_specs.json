@@ -1,0 +1,52 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-artisit",
+      "2": "I-artisit",
+      "3": "L-artisit",
+      "4": "U-artisit",
+      "5": "B-artist",
+      "6": "I-artist",
+      "7": "L-artist",
+      "8": "U-artist",
+      "9": "B-name",
+      "10": "I-name",
+      "11": "L-name",
+      "12": "U-name",
+      "13": "B-search",
+      "14": "I-search",
+      "15": "L-search",
+      "16": "U-search",
+      "17": "B-song",
+      "18": "I-song",
+      "19": "L-song",
+      "20": "U-song",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-artisit": 1,
+      "I-artisit": 2,
+      "L-artisit": 3,
+      "U-artisit": 4,
+      "B-artist": 5,
+      "I-artist": 6,
+      "L-artist": 7,
+      "U-artist": 8,
+      "B-name": 9,
+      "I-name": 10,
+      "L-name": 11,
+      "U-name": 12,
+      "B-search": 13,
+      "I-search": 14,
+      "L-search": 15,
+      "U-search": 16,
+      "B-song": 17,
+      "I-song": 18,
+      "L-song": 19,
+      "U-song": 20,
+      "O": 0
+    },
+    "num_tags": 21
+  }
+]

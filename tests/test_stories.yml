@@ -1,0 +1,130 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+- story: bot challenge
+  steps:
+  - user: |
+      are you a bot?
+    intent: bot_challenge
+  - action: utter_iamabot
+
+- story: User supplies name
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_name
+  - slot_was_set:
+    - 
+  - intent: supply_name
+  - action: utter_acknowledge_provided_info # add action for verify user--> you just have to check the database. if not match then error
+
+
+
+- story: turn off the lights
+  steps:
+  - intent: turn_off_lights
+  - action: action_light_off
+  - action: utter_turning_lights_off
+
+- story: turn on the lights
+  steps:
+  - intent: turn_on_lights
+  - action: action_light_on
+  - action: utter_turning_lights_on
+
+
+
+- story: lock the smart door
+  steps:
+  - intent: lock_door
+  - action: action_lock_door
+  - action: utter_locking_door
+
+- story: unlock the smart door
+  steps:
+  - intent: unlock_door
+  - action: action_unlock_door
+  - action: utter_unlocking_door
+
+
+- story: google searching
+  steps:
+  - intent: search_for
+  - action: utter_search
+
+
+- story: signing off
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+
+- story: opening entertainment long
+  steps:
+  - intent: open_entertainment_long
+  - action: action_open_entertainment
+
+- story: opening entertainment short
+  steps:
+  - intent: open_entertainment_short
+  - action: utter_ask_for_source
+  - action: utter_ask_for_entertainment
+  - action: action_open_entertainment
+
+- story: closing entertainment
+  steps:
+  - intent: close_entertainment
+  - action: action_close_entertainment
+
+- story: User sets the thermostat temperature
+  steps:
+  - intent: set_thermostat
+  - action: action_set_thermostat
+
+- story: User decreases the thermostat temperature 
+  steps:
+  - intent: dec_thermostat
+  - action: action_decrease_thermostat
+
+
+- story: User increases the thermostat temperature
+  steps:
+  - intent: inc_thermostat
+  - action: action_increase_thermostat
+
+- story: User sets the alarm
+  steps:
+  - intent: set_alarm
+  - action: action_set_alarm
+
+- story: User checks air purification status
+  steps:
+  - intent: check_air_purification
+  - action: action_check_air_purification
+
+- story: User turns on the boiler
+  steps:
+  - intent: turning_on_boiler
+  - action: action_turn_on_boiler
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_name
+  - intent: supply_name
+    entities:
+    - name: Farae
+  - slot_was_set:
+    - name: Farae
+  - action: utter_acknowledge_provided_info
+
+- story: interactive_story_2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_ask_for_name
