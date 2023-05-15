@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="index.css" />
     <title>H.E.L.I.X.</title>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <style>
       body {
@@ -181,6 +184,17 @@
             .join("");
 
           inputBox.value = transcript;
+
+          // Save the recorded audio to a file and download it
+          const blob = new Blob([e.results[0][0].blob], { type: "audio/wav" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "recorded_audio.wav";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
         });
       } else {
         console.log("Your browser does not support speech recognition.");
